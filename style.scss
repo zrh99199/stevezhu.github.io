@@ -18,9 +18,12 @@ html {
 }
 
 body {
-	background: $white;
-  font: 18px/1.4 $helvetica;
+  background: $white;
+  font-family: 'Lato', sans-serif;
+  font-family: 'Lato', sans-serif;
   color: $darkGray;
+  line-height: 1.5;
+  font-size: large;
 }
 
 .container {
@@ -31,11 +34,11 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $helveticaNeue;
+  font-family: 'Lato', sans-serif;
   color: $darkerGray;
   font-weight: bold;
 
-  line-height: 1.7;
+  line-height: 1.5;
   margin: 1em 0 15px;
   padding: 0;
 
@@ -281,6 +284,26 @@ nav {
 footer {
   padding: 20px 0;
   text-align: center;
+}
+
+.got-help {
+  border-radius: 20px;
+  border: 5px solid $baby-blue;
+  background-color: $baby-blue-30;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.gave-help {
+  border-radius: 20px;
+  border: 5px solid $peach-quartz;
+  background-color: $peach-quartz-30;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
