@@ -8,11 +8,11 @@ In this post, we'll see some examples of how to create technical posts that incl
 
 Since your primary homework posts will be based on previous work you did in a Jupyter notebook, you're likely to want to know how to easily convert a Jupyter notebook into a blog post. This [helpful guide](https://cduvallet.github.io/posts/2018/03/ipython-notebooks-jekyll) outlines the main steps.  
 
-# File Format
+## File Format
 
 Your posts should be placed in the `_posts/` directory of your website. All posts should have extension `.md` for Markdown. The filename must be of the form `YYYY-MM-DD-my-title.md`, where `YYYY-MM-DD` is a date such as `2021-04-01`. The date is somewhat arbitrary, and is used primarily to determine which posts are shown first on your blog. However, note that specifying a date in the future might cause your post not to appear because Jekyll will treat it as "not yet published." 
 
-# Markdown Styling
+## Markdown Styling
 
 You can use Markdown to style basic text, much as you do in Jupyter Notebooks. For example, you can create *italic* and **bold** text using `*`. You can also make headers like 
 
@@ -48,7 +48,7 @@ $$\sum_{i = 1}^{\infty} \frac{1}{i^2} = \frac{\pi^2}{6}.$$
 
 
 
-# Code
+## Code
 
 There are two main ways to insert code in your posts. When talking about a short concept, like the `np.random.rand` function, you can type back ticks like this: \``np.random.rand`\`. 
 
@@ -73,7 +73,7 @@ to boldly go
 
 
 
-# Images
+## Images
 
 You can and should include images in your posts, especially in cases where you have created a data visualization. If the image is already available online, you can link to it using the syntax `![](image_url)`: 
 
@@ -100,7 +100,7 @@ To create this example, I first ran the code in a Jupyter Notebook, and added th
 immediately beneath the code block. 
 
 
-# Describing Feedback
+## Describing Feedback
 
 One important requirement for your homework assignments is to clearly state multiple moments in which you (a) learned something useful from your peer feedback or (b) contributed an important insight during peer feedback. This website template includes two special CSS classes that you should use for this purpose. 
 
