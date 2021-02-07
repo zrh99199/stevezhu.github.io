@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Local Editing
+title: Local editing
 ---
 
 It is possible to construct, maintain, and update your blog fully from GitHub. In this case, it is not necessary to download your blog's files or modify them on your computer. However, when constructing complex posts involving code and figures, local editing can be more comfortable. Additionally, since GitHub Pages usually takes a few minutes to publish all your changes, modifying your blog locally allows you to more quickly see the results of your changes, including errors when they arise. In this post, I'll show how to manage your blog locally. 
