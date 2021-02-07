@@ -3,13 +3,13 @@
 #
 
 # Name of your site (displayed in the header)
-name: PIC16B
+name: My PIC16B Blog
 
 # Short bio or description (displayed in the header)
-description: Awesome Student at an Unspecified (but Very Cool) University
+description: Awesome Python Student
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png
+avatar: https://raw.githubusercontent.com/PIC16B/PIC16B.github.io/master/images/ucla-math.png
 
 #
 # Flags below are optional
