@@ -100,7 +100,7 @@ To create this example, I first ran the code in a Jupyter Notebook, and added th
 immediately beneath the code block. 
 
 
-## Describing Feedback
+## Describing Peer Feedback
 
 One important requirement for your homework assignments is to clearly state multiple moments in which you (a) learned something useful from your peer feedback or (b) contributed an important insight during peer feedback. This website template includes two special CSS classes that you should use for this purpose. 
 
