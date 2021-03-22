@@ -74,7 +74,8 @@ Although this repository contains noticeably more files than the one we [practic
 
 Open up the repository that you just cloned in a file explorer, and take a look around. It should look something like this: 
 
-\[username\].github.io
+```bash
+[username].github.io
 ├── _includes/
 ├── _layouts/
 ├── _posts/
@@ -90,6 +91,7 @@ Open up the repository that you just cloned in a file explorer, and take a look 
 ├── about.md
 ├── index.html
 └── style.scss
+```
 
 You won't need to touch most of these files, but we'll soon take a quick tour. 
 
