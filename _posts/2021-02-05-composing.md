@@ -50,7 +50,7 @@ $$\sum_{i = 1}^{\infty} \frac{1}{i^2} = \frac{\pi^2}{6}.$$
 
 ## Code
 
-There are two main ways to insert code in your posts. When talking about a short concept, like the `np.random.rand` function, you can type back ticks like this: \``np.random.rand`\`. 
+There are two main ways to insert code in your posts. When talking about a short concept, like the `np.random.rand()` function, you can type back ticks like this: \``np.random.rand()`\`. 
 
 To create a larger block of code, use three consecutive backticks ``` to both open and close the code block. If you place the word `python` immediately after the opening code blocks, you'll get attractive syntax highlighting: 
 
