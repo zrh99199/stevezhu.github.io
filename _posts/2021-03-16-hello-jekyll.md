@@ -52,15 +52,8 @@ https://[your username].github.io/
 
 If you see a webpage there, congrats! Your blog is up and running. At the moment, it's just a copy of the template, so it's not personalized in any way. 
 
-## 3. Add Your Name
 
-Still on GitHub, find the file `_config.yml`. Click the pencil icon to edit the file. Change the `name` and `description` fields. Anything is fine! You're encouraged but not required to use your real name. 
-
-In a few moments, your website will update with the new information. Now it's yours! 
-
-For now, move on to the next step. 
-
-## 4. Clone Your New Blog
+## 3. Clone Your New Blog
 
 Your next step is to clone your blog. Make sure that you clone *your* blog (the fork that you just created) and not the original template. 
 
@@ -70,7 +63,7 @@ Although this repository contains noticeably more files than the one we [practic
 2. Choose "Open with GitHub Desktop."
 3. Wait a moment for the files to download. 
 
-## 5. Look Around
+## 4. Look Around
 
 Open up the repository that you just cloned in a file explorer, and take a look around. It should look something like this: 
 
@@ -95,7 +88,7 @@ Open up the repository that you just cloned in a file explorer, and take a look 
 
 You won't need to touch most of these files, but we'll soon take a quick tour. 
 
-## 6. Serve Your Blog Locally
+## 5. Serve Your Blog Locally
 
 Serving your blog locally allows you to preview what your site will look like before you place it online. This is what we actually need Jekyll for. 
 
@@ -115,6 +108,15 @@ Server running... press ctrl-c to stop.
 ```
 
 Navigate to `http://127.0.0.1:4000/` in your browser. You should see an exact copy of the blog! This copy isn't online; it's running directly on your computer. This allows you to (a) preview changes more rapidly than you can by editing on GitHub and (b) work on your blog using a text editor, which is usually more comfortable than the file modification interface on GitHub. 
+
+## 6. Add Your Name
+
+Still on GitHub, find the file `_config.yml`. Click the pencil icon to edit the file. Change the `name` and `description` fields. Anything is fine! You're encouraged but not required to use your real name. 
+
+In a few moments, your website will update with the new information. Now it's yours! 
+
+For now, move on to the next step. 
+
 
 ## 7. Make a Post
 
