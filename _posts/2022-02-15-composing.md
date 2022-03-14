@@ -14,7 +14,10 @@ Your posts should be placed in the `_posts/` directory of your website. All post
 
 ## Markdown Styling
 
-You can use Markdown to style basic text, much as you do in Jupyter Notebooks. For example, you can create *italic* and **bold** text using `*`. You can also make headers like 
+You can use Markdown to style basic text, much as you do in Jupyter Notebooks. 
+GitHub Pages use kramdown to parse your markdown text, so refer to [Quick Reference](https://kramdown.gettalong.org/quickref.html) or [Full Syntax Documentation](https://kramdown.gettalong.org/syntax.html) if you have questions.
+
+For example, you can create *italic* and **bold** text using `*`. You can also make headers like 
 
 #### this one
 
@@ -40,14 +43,11 @@ Both of these support arbitrary nesting:
     3. Pour water in mug.
 - Read a book. 
 
-GitHub Pages use kramdown to parse your markdown text, so refer to [Quick Reference](https://kramdown.gettalong.org/quickref.html) or [Full Syntax Documentation](https://kramdown.gettalong.org/syntax.html) if you have questions.
-
 ## Math
 
 If you are familiar with the $$\LaTeX$$ typesetting system, you can use many standard commands by enclosing them in double \$ symbols. You can make both inline math like $$f(x) = e^x$$ and display math like 
 
 $$\sum_{i = 1}^{\infty} \frac{1}{i^2} = \frac{\pi^2}{6}.$$
-
 
 
 ## Code
@@ -79,6 +79,8 @@ to boldly go
 
 You can and should include images in your posts, especially in cases where you have created a data visualization. If the image is already available online, you can link to it using the syntax `![alt text](image_url)`: 
 ![](https://imgs.xkcd.com/comics/python.png)
+
+(Source: [https://xkcd.com/353/](https://xkcd.com/353/))
 
 In cases in which your code produces an image, you should save the image (such as via `plt.savefig()`), then save it in the `images` directory. You can then embed it directly under the code that generates it on your blog post, using the code 
 ```
