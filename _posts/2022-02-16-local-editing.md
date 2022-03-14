@@ -9,7 +9,7 @@ It is possible to construct, maintain, and update your blog fully from GitHub. I
 
 - A GitHub account with a fork of this blog with repository name `username.github.io`. 
 - Either the GitHub Desktop app (recommended) or comfort using basic git commands in the terminal. 
-- An installed copy of the `jekyll` utility. You should first install [Ruby](https://www.ruby-lang.org/en/downloads/), after which you can use Ruby to [install Jekyll](https://jekyllrb.com/docs/installation/). 
+- An installed copy of the `jekyll` utility. You should first install [Ruby](https://www.ruby-lang.org/en/downloads/), after which you can use Ruby to [install Jekyll](https://jekyllrb.com/docs/installation/). This should already be done by following the [software installation instructions]({{ site.baseurl }}/software).
 - A text editor. Jupyter Lab already comes with a basic text editor, but if you expect to write a significant amount of code in your career then it is worthwhile to find a text editor that you like. [Visual Studio Code](https://code.visualstudio.com/) is my personal choice. [Sublime Text](https://www.sublimetext.com/) and [Atom](https://atom.io/) are also popular. 
 
 ## Clone Your Blog
@@ -26,7 +26,7 @@ Jekyll is a utility that transforms *markdown* files, like the ones in this repo
 
 1. Open a terminal. 
 2. Navigate using the `cd` command to the directory containing your blog. 
-3. In the terminal, type the command `jekyll serve`. You'll see a few printed messages in the terminal. 
+3. In the terminal, type the command `jekyll serve --livereload`. You'll see a few printed messages in the terminal. 
 4. Look for the *server address*, which will likely resemble `http://127.0.0.1:4000/`. Paste this address into your browser. You should see your blog! 
 
 Changes that you make to your blog files will be quickly and automatically reflected in the locally served version of your blog. Here's what this looks like in action. Note that, in the terminal on the left, I've included both the `cd` command to navigate to the location of the blog files, as well as the subsequent command `jekyll serve`.  
