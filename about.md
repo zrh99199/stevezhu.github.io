@@ -3,13 +3,14 @@ layout: page
 title: About
 permalink: /about/
 ---
+Hello I am Puppycat, PhD. I am a Python master.
 
-Some information about you!
+## More information
 
-### More Information
+My favorite food is spinach and corn. I like to SCREAM when I don't get my way but that's okay because I'm cute.
 
-A place to include any other types of information that you'd like to include about yourself.
+![](/images/puppycat.jpg){:height="300px"}
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[puppycat@puppycat.org](mailto:puppycat@puppycat.org)
