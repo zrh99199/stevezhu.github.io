@@ -10,3 +10,4 @@ node_modules
 package.json
 .jekyll-cache*
 .ruby-version
+.ipynb_checkpoints/
