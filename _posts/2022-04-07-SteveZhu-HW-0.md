@@ -25,6 +25,7 @@ Take a look now
 ```python
 penguins.head()
 ```
+
 	Species	Island	Sex	Culmen Length (mm)	Culmen Depth (mm)	Flipper Length (mm)	Body Mass (g)
 0	Adelie	Torgersen	MALE	39.1	18.7	181.0	3750.0
 1	Adelie	Torgersen	FEMALE	39.5	17.4	186.0	3800.0
@@ -36,13 +37,13 @@ penguins.head()
 
 We will learn two ways to visualize our data, using matplotlib and using plotly.
 
-#### *matplotlib*
+#### matplotlib
 Import pyplot from matplotlib and use pyplot modules to visualize the features
 ```python
 from matplotlib import pyplot as plt
 ```
 
-#### Scatter plots
+#### *Scatter plots*
 
 ```python
 fig,ax = plt.subplots(1) #set the plot first
@@ -59,7 +60,7 @@ ax.legend() #add legend
 ```
 ![HW0-plot1.png](/images/HW0-plot3.png)
 
-#### Histograms
+#### *Histograms*
 
 ```python
 fig,ax = plt.subplots(1) #set the plot first
@@ -78,7 +79,7 @@ ax.legend() #add legend
 ```
 ![HW0-plot1.png](/images/HW0-plot4.png)
 
-#### *plotly*
+#### plotly
 plotly is a easier way to create plots, and the created plot is interactable.
 
 Import express from plotly and use express modules to visualize the features
@@ -86,7 +87,7 @@ Import express from plotly and use express modules to visualize the features
 from plotly import express as px
 ```
 
-#### Scatter Plots
+#### *Scatter plots*
 reference: https://plotly.com/python-api-reference/generated/plotly.express.scatter.html
 ```python
 fig = px.scatter(data_frame = penguins, # data that needs to be plotted
@@ -103,7 +104,7 @@ fig.show()
 ```
 ![HW0-plot1.png](/images/HW0-plot1.png)
 
-#### Histograms
+#### *Histograms*
 reference: https://plotly.com/python-api-reference/generated/plotly.express.histogram.html
 ```python
 fig = px.histogram(data_frame = penguins, # data that needs to be plotted
