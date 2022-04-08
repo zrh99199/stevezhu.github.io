@@ -57,7 +57,7 @@ ax.set_ylabel("Culmen Depth (mm)", fontsize = 20) #set y-axis label
 fig.suptitle("Relationship between Culmen Length and Culmen Depth") #set title    
 ax.legend() #add legend
 ```
-![HW0-plot1.png](/images/HW0-plot1.png)
+![HW0-plot1.png](/images/HW0-plot3.png)
 
 #### Histograms
 
@@ -76,7 +76,7 @@ ax.set_ylabel("Frequency", fontsize = 15) #set y-axis label
 fig.suptitle("Histogram of body mass by species") #set title    
 ax.legend() #add legend
 ```
-![HW0-plot1.png](/images/HW0-plot1.png)
+![HW0-plot1.png](/images/HW0-plot4.png)
 
 #### *plotly*
 plotly is a easier way to create plots, and the created plot is interactable.
