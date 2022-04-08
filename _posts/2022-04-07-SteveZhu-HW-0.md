@@ -7,13 +7,13 @@ title: Homework 0
 ### 1. Load and clean the data
 
 Import pandas and use pandas to load the csv file from the internet
-```
+```python
 import pandas as pd
 url = "https://raw.githubusercontent.com/PhilChodrow/PIC16B/master/datasets/palmer_penguins.csv"
 penguins = pd.read_csv(url)
 ```
 Clean the data
-```
+```python
 penguins = penguins.dropna(subset = ["Body Mass (g)", "Sex"])
 penguins["Species"] = penguins["Species"].str.split().str.get(0)
 penguins = penguins[penguins["Sex"] != "."]
@@ -22,7 +22,7 @@ cols = ["Species", "Island", "Sex", "Culmen Length (mm)", "Culmen Depth (mm)", "
 penguins = penguins[cols]
 ```
 Take a look now
-```
+```python
 penguins.head()
 ```
 
@@ -30,8 +30,8 @@ penguins.head()
 
 Import express from plotly and use express modules to visualize the features
 
-```
-from matplotlib import pyplot as plt
+```python
+from plotly import express as px
 ```
 
 #### Scatter Plots
@@ -40,7 +40,7 @@ reference: https://plotly.com/python-api-reference/generated/plotly.express.scat
 fig = px.scatter(data_frame = penguins, # data that needs to be plotted
                  x = "Culmen Length (mm)", # column name for x-axis
                  y = "Culmen Depth (mm)", # column name for y-axis
-                 color = "Species", # column name for 
+                 color = "Species", # mark species by different colors
                  width = 500,
                  height = 300)
 
@@ -49,3 +49,20 @@ fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 # show the plot
 fig.show()
 ```
+
+#### Histograms
+reference: https://plotly.com/python-api-reference/generated/plotly.express.histogram.html
+```python
+fig = px.histogram(data_frame = penguins, # data that needs to be plotted
+                 x = "Culmen Length (mm)", # column name for x-axis
+                 color = "Species", # column name for color coding
+                 nbins = 50,
+                 opacity = 0.7,
+                 width = 600,
+                 height = 400)
+
+fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+fig.show()
+```
+
+More plot types available on https://plotly.com/python-api-reference/generated/plotly.express.html#module-plotly.express
