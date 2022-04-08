@@ -25,12 +25,58 @@ Take a look now
 ```python
 penguins.head()
 ```
-
+	Species	Island	Sex	Culmen Length (mm)	Culmen Depth (mm)	Flipper Length (mm)	Body Mass (g)
+0	Adelie	Torgersen	MALE	39.1	18.7	181.0	3750.0
+1	Adelie	Torgersen	FEMALE	39.5	17.4	186.0	3800.0
+2	Adelie	Torgersen	FEMALE	40.3	18.0	195.0	3250.0
+4	Adelie	Torgersen	FEMALE	36.7	19.3	193.0	3450.0
+5	Adelie	Torgersen	MALE	39.3	20.6	190.0	3650.0
+ 
 ### 2. Visualization
 
 We will learn two ways to visualize our data, using matplotlib and using plotly.
 
 #### *matplotlib*
+Import pyplot from matplotlib and use pyplot modules to visualize the features
+```python
+from matplotlib import pyplot as plt
+```
+
+#### Scatter plots
+
+```python
+fig,ax = plt.subplots(1) #set the plot first
+
+for g in penguins['Species'].unique():
+    ax.scatter(penguins['Culmen Length (mm)'][penguins['Species'] == g], 
+               penguins['Culmen Depth (mm)'][penguins['Species'] == g],
+               label = g) #label the point by their species, easy to add legend later
+    
+ax.set_xlabel("Culmen Length (mm)", fontsize = 20) #set x-axis label
+ax.set_ylabel("Culmen Depth (mm)", fontsize = 20) #set y-axis label
+fig.suptitle("Relationship between Culmen Length and Culmen Depth") #set title    
+ax.legend() #add legend
+```
+![HW0-plot1.png](/images/HW0-plot1.png)
+
+#### Histograms
+
+```python
+fig,ax = plt.subplots(1) #set the plot first
+
+for g in penguins['Species'].unique():
+    ax.hist(penguins['Body Mass (g)'][penguins['Species'] == g],
+            alpha = 0.5, #alpha control the opacity of the graph
+            bins = 10, #bin numbers
+            label = g) #label the point by their species, easy to add legend later
+    
+ax.set_xlabel("Body Mass(g)", fontsize = 20) #set x-axis label
+ax.set_ylabel("Frequency", fontsize = 15) #set y-axis label
+
+fig.suptitle("Histogram of body mass by species") #set title    
+ax.legend() #add legend
+```
+![HW0-plot1.png](/images/HW0-plot1.png)
 
 #### *plotly*
 plotly is a easier way to create plots, and the created plot is interactable.
