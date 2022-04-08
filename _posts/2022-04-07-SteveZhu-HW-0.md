@@ -28,15 +28,21 @@ penguins.head()
 
 ### 2. Visualization
 
-Import express from plotly and use express modules to visualize the features
+We will learn two ways to visualize our data, using matplotlib and using plotly.
 
+#### *matplotlib*
+
+#### *plotly*
+plotly is a easier way to create plots, and the created plot is interactable.
+
+Import express from plotly and use express modules to visualize the features
 ```python
 from plotly import express as px
 ```
 
 #### Scatter Plots
 reference: https://plotly.com/python-api-reference/generated/plotly.express.scatter.html
-```
+```python
 fig = px.scatter(data_frame = penguins, # data that needs to be plotted
                  x = "Culmen Length (mm)", # column name for x-axis
                  y = "Culmen Depth (mm)", # column name for y-axis
@@ -49,6 +55,7 @@ fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 # show the plot
 fig.show()
 ```
+![HW0-plot1.png](/images/HW0-plot1.png)
 
 #### Histograms
 reference: https://plotly.com/python-api-reference/generated/plotly.express.histogram.html
@@ -64,5 +71,6 @@ fig = px.histogram(data_frame = penguins, # data that needs to be plotted
 fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 fig.show()
 ```
+![HW0-plot2.png](/images/HW0-plot2.png)
 
 More plot types available on https://plotly.com/python-api-reference/generated/plotly.express.html#module-plotly.express
