@@ -27,12 +27,19 @@ penguins.head()
 ```
 
 ```
-	Species	Island	Sex	Culmen Length (mm)	Culmen Depth (mm)	Flipper Length (mm)	Body Mass (g)
-0	Adelie	Torgersen	MALE	39.1	18.7	181.0	3750.0
-1	Adelie	Torgersen	FEMALE	39.5	17.4	186.0	3800.0
-2	Adelie	Torgersen	FEMALE	40.3	18.0	195.0	3250.0
-4	Adelie	Torgersen	FEMALE	36.7	19.3	193.0	3450.0
-5	Adelie	Torgersen	MALE	39.3	20.6	190.0	3650.0
+  Species     Island     Sex  Culmen Length (mm)  Culmen Depth (mm)  \
+0  Adelie  Torgersen    MALE                39.1               18.7   
+1  Adelie  Torgersen  FEMALE                39.5               17.4   
+2  Adelie  Torgersen  FEMALE                40.3               18.0   
+4  Adelie  Torgersen  FEMALE                36.7               19.3   
+5  Adelie  Torgersen    MALE                39.3               20.6   
+
+   Flipper Length (mm)  Body Mass (g)  
+0                181.0         3750.0  
+1                186.0         3800.0  
+2                195.0         3250.0  
+4                193.0         3450.0  
+5                190.0         3650.0    
 ```
 
 ### 2. Visualization
