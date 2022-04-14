@@ -273,4 +273,217 @@ fig = temperature_coefficient_plot("India", 1980, 2020, 1,
 
 fig.show()
 ```
-file:///C:/Users/zrh99/Downloads/temp_coef_plot.html
+file:///D:/Github/stevezhu.github.io/images/temp_coef_plot.html
+
+Now I have a question: Which part of the world has the largest standard deviation in temperature?(Or which part's temperature varys more often than others)
+To find out the answer, I want to build a choropleths
+
+
+*Write a function to get data from the database*
+```python
+def query_climate_database_2(year_begin, month):
+    """
+    A function take input year_begin" and "month", return a dataframe contains 
+    stations' name, latitude, longitude, country, year, month and temp
+    """
+    
+    conn = sqlite3.connect("hw1.db")
+    cmd = \
+    """
+    SELECT S.name, S.latitude, S.longitude, C.country, T.year, T.month, T.temp \
+    FROM temperatures T \
+    LEFT JOIN countries C ON SUBSTR(T.id,1,2) == C.FIPS_10_4 \
+    LEFT JOIN stations S ON T.id = S.id \
+    WHERE T.year >= ? 
+    AND month = ?
+    """
+    
+    return pd.read_sql(cmd, conn, params=[year_begin, month])
+```
+Check if it works
+```python
+query_climate_database_2(1980, 1)
+```
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NAME</th>
+      <th>LATITUDE</th>
+      <th>LONGITUDE</th>
+      <th>country</th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>Temp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>SAVE</td>
+      <td>57.7667</td>
+      <td>11.8667</td>
+      <td>Antigua and Barbuda</td>
+      <td>1980</td>
+      <td>1</td>
+      <td>-2.71</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>SAVE</td>
+      <td>57.7667</td>
+      <td>11.8667</td>
+      <td>Antigua and Barbuda</td>
+      <td>1981</td>
+      <td>1</td>
+      <td>-1.01</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>SAVE</td>
+      <td>57.7667</td>
+      <td>11.8667</td>
+      <td>Antigua and Barbuda</td>
+      <td>1982</td>
+      <td>1</td>
+      <td>-5.51</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>SAVE</td>
+      <td>57.7667</td>
+      <td>11.8667</td>
+      <td>Antigua and Barbuda</td>
+      <td>1983</td>
+      <td>1</td>
+      <td>4.69</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>SAVE</td>
+      <td>57.7667</td>
+      <td>11.8667</td>
+      <td>Antigua and Barbuda</td>
+      <td>1984</td>
+      <td>1</td>
+      <td>0.09</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>561455</th>
+      <td>BEITBRIDGE</td>
+      <td>-22.2170</td>
+      <td>30.0000</td>
+      <td>Zimbabwe</td>
+      <td>1989</td>
+      <td>1</td>
+      <td>28.45</td>
+    </tr>
+    <tr>
+      <th>561456</th>
+      <td>BEITBRIDGE</td>
+      <td>-22.2170</td>
+      <td>30.0000</td>
+      <td>Zimbabwe</td>
+      <td>1990</td>
+      <td>1</td>
+      <td>27.56</td>
+    </tr>
+    <tr>
+      <th>561457</th>
+      <td>HARARE_BELVEDERE</td>
+      <td>-17.8300</td>
+      <td>31.0200</td>
+      <td>Zimbabwe</td>
+      <td>1983</td>
+      <td>1</td>
+      <td>22.60</td>
+    </tr>
+    <tr>
+      <th>561458</th>
+      <td>HARARE_BELVEDERE</td>
+      <td>-17.8300</td>
+      <td>31.0200</td>
+      <td>Zimbabwe</td>
+      <td>1984</td>
+      <td>1</td>
+      <td>21.70</td>
+    </tr>
+    <tr>
+      <th>561459</th>
+      <td>GRAND_REEF</td>
+      <td>-18.9800</td>
+      <td>32.4500</td>
+      <td>Zimbabwe</td>
+      <td>1981</td>
+      <td>1</td>
+      <td>24.30</td>
+    </tr>
+  </tbody>
+</table>
+<p>561460 rows × 7 columns</p>
+</div>
+
+*Write the plot function"
+```python
+import numpy as np
+
+def temp_std_plot(year_begin, month, min_obs, **kwargs):
+    """
+    A function take input "country", "year_begin", "month", "min_obs" and "**kwargs"
+    return a scatter geo to show the standard deviation of temperature for the given month
+    """
+    
+    df = query_climate_database_2(year_begin, month)
+
+    # drow the row with less than min_obs observations
+    name_col = df[['NAME', 'Temp']].copy()
+    name_col['Num_obs'] = name_col.groupby(["NAME"]).transform(len)
+    df['Num_obs'] = name_col['Num_obs']
+    df = df[df['Num_obs'] >= min_obs]
+    
+    # create graph data frame
+    graph_df = df[['NAME','LATITUDE','LONGITUDE','country']].drop_duplicates(subset = ["NAME"])
+
+    # calculate the std of temp by groupby
+    df_std = df.groupby(["NAME","Month"])["Temp"].aggregate(np.std).to_frame(name='std')
+    df_std['std'] = round(df_std['std'], 4)
+    
+    # merge two data frames
+    graph_df = graph_df.merge(df_std, left_on='NAME', right_on='NAME')
+
+    return px.scatter_geo(graph_df, lat="LATITUDE", lon = "LONGITUDE",
+                          hover_name="NAME", 
+                          size="std",
+                          title = "Standard deviation of temperature in " + pd.to_datetime(month, format='%m').month_name() + 
+                             " since " + str(year_begin),
+                          **kwargs)
+
+fig = temp_std_plot(1980, 1, min_obs = 10, size_max=5, projection="natural earth")
+fig.show()
+```
+file:///D:/Github/stevezhu.github.io/images/temp_std_plot.html
