@@ -530,14 +530,14 @@ def temp_change_boxplot(country, year_begin, year_end, month, **kwargs):
                         x = "Estimated Yearly Increase in Temperature (°C)",
                         facet_row = "EW",
                         facet_col = "NS",
-                        title = "Boxplot of estimates of yearly increase in temperature in " + pd.to_datetime(month, format='%m').month_name() + " for stations in " + country + "for years " + str(year_begin) + " - " + str(year_end),
+                        title = "Boxplot of estimates of yearly increase in temperature in " + pd.to_datetime(month, format='%m').month_name() + " for stations in " + country + " for years " + str(year_begin) + " - " + str(year_end),
                         **kwargs)
 
 ```
 *Show the plot*
 
 ```python
-fig = temp_change_boxplot("India", 1980, 2020, 1)
+fig = temp_change_boxplot("India", 1980, 2020, 1, width = 500, height = 1000)
 fig.show()
 ```
 {% include temp_box_plot.html %}
