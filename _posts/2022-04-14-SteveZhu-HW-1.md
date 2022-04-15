@@ -257,7 +257,7 @@ def temperature_coefficient_plot(country, year_begin, year_end, month, min_obs, 
                              hover_name = "NAME",
                              color = "Estimated Yearly Increase in Temperature (°C)",
                              title = "Estimates of yearly increase in temperature in " + pd.to_datetime(month, format='%m').month_name() + 
-                             " for stations in " + country + ", years " + str(year_begin) + " - " + str(year_end),
+                             " for stations in " + country + "for years " + str(year_begin) + " - " + str(year_end),
                              **kwargs)
 ```
 
@@ -268,6 +268,8 @@ color_map = px.colors.diverging.RdGy_r # choose a colormap
 fig = temperature_coefficient_plot("India", 1980, 2020, 1, 
                                    min_obs = 10,
                                    zoom = 2,
+                                   width = 1000,
+                                   height = 500,
                                    mapbox_style="carto-positron",
                                    color_continuous_scale=color_map)
 
@@ -275,7 +277,7 @@ fig.show()
 ```
 {% include temp_coef_plot.html %}
 
-### Question 2: Which part of the world has the largest standard deviation in temperature?(Or which part's temperature varys more often than others)
+### Question 2: Which countries have the largest standard deviation in temperature?(Or which part's temperature varys more often than others)
 To find out the answer, I want to build a choropleths
 
 *Write a function to get data from the database*
@@ -528,7 +530,7 @@ def temp_change_boxplot(country, year_begin, year_end, month, **kwargs):
                         x = "Estimated Yearly Increase in Temperature (°C)",
                         facet_row = "EW",
                         facet_col = "NS",
-                        title = "Boxplot of estimates of yearly increase in temperature in " + pd.to_datetime(month, format='%m').month_name() + " for stations in " + country + ", years " + str(year_begin) + " - " + str(year_end),
+                        title = "Boxplot of estimates of yearly increase in temperature in " + pd.to_datetime(month, format='%m').month_name() + " for stations in " + country + "for years " + str(year_begin) + " - " + str(year_end),
                         **kwargs)
 
 ```
