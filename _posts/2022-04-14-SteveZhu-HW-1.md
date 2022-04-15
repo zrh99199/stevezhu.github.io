@@ -301,7 +301,8 @@ def query_climate_database_2(year_begin, month):
     
     return pd.read_sql(cmd, conn, params=[year_begin, month])
 ```
-*Show the plot*
+Check if it works
+
 ```python
 query_climate_database_2(1980, 1)
 ```
@@ -494,6 +495,52 @@ fig.show()
 {% include temp_std_plot.html %}
 
 From the plot, I found in January, the places in high latitude tend to have higher standard deviation of temperature than the places in low latitude
+
+So, plot the latitude with std to see their relationship
+
+*Write the plot function*
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+def lat_std_scplot(year_begin, month, min_obs, **kwargs):
+    """
+    A function take input "country", "year_begin", "month", "min_obs" and "**kwargs"
+    return a scatter plot to show the relationship between standard deviation of temperature 
+    and latitude for the given month
+    """
+    
+    # prepare data frame as same as previous plot
+    df = query_climate_database_2(year_begin, month)
+
+    # drow the row with less than min_obs observations
+    name_col = df[['NAME', 'Temp']].copy()
+    name_col['Num_obs'] = name_col.groupby(["NAME"]).transform(len)
+    df['Num_obs'] = name_col['Num_obs']
+    df = df[df['Num_obs'] >= min_obs]
+    
+    # create graph data frame
+    graph_df = df[['NAME','LATITUDE','LONGITUDE','country']].drop_duplicates(subset = ["NAME"])
+
+    # calculate the std of temp by groupby
+    df_std = df.groupby(["NAME","Month"])["Temp"].aggregate(np.std).to_frame(name='std')
+    df_std['std'] = round(df_std['std'], 4)
+    
+    # merge two data frames
+    graph_df = graph_df.merge(df_std, left_on='NAME', right_on='NAME')
+    
+    ax = sns.lmplot(x='LATITUDE', y='std', data=graph_df, **kwargs)
+    ax.set(ylabel = "Standard deviation of temperature in "+ pd.to_datetime(month, format='%m').month_name(), xlabel = "Latitude", title = "Relationship between Standard deviation of temperature and latitude")
+    ax.fig.set_figwidth(10)
+    ax.fig.set_figheight(5)
+```
+
+*Show the plot*
+```python
+lat_std_scplot(1980, 1, min_obs = 10, ci = None, scatter_kws = {"s": 10}, line_kws ={"color": "red"})
+```
+![HW1_Sctplot.png](/images/HW1_Sctplot.png)
+Based on the scatter plot, I found there is a positive correlation between the latitude and the standard deviation of temeprature, which means a place in high latitude tends to exprience more variable temperature in January
 
 ### Question 3: Which parts(North-East, North-West, South-East, South-West) of a given country have a higher average yearly change of temperature in a given month?
 
