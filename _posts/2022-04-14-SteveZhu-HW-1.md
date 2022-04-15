@@ -539,7 +539,7 @@ def lat_std_scplot(year_begin, month, min_obs, **kwargs):
 ```python
 lat_std_scplot(1980, 1, min_obs = 10, ci = None, scatter_kws = {"s": 10}, line_kws ={"color": "red"})
 ```
-![HW1_Sctplot.png](/images/HW1_Sctplot.png)
+![Hw1_Sctplot.png](/images/Hw1_Sctplot.png)
 Based on the scatter plot, I found there is a positive correlation between the latitude and the standard deviation of temeprature, which means a place in high latitude tends to exprience more variable temperature in January
 
 ### Question 3: Which parts(North-East, North-West, South-East, South-West) of a given country have a higher average yearly change of temperature in a given month?
