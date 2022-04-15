@@ -261,7 +261,7 @@ def temperature_coefficient_plot(country, year_begin, year_end, month, min_obs, 
                              **kwargs)
 ```
 
-Let's try if it works
+Show the plot
 ```python
 color_map = px.colors.diverging.RdGy_r # choose a colormap
 
@@ -273,11 +273,10 @@ fig = temperature_coefficient_plot("India", 1980, 2020, 1,
 
 fig.show()
 ```
-file:///D:/Github/stevezhu.github.io/images/temp_coef_plot.html
+![temp_coef_plot.html](/images/temp_coef_plot.html)
 
-Now I have a question: Which part of the world has the largest standard deviation in temperature?(Or which part's temperature varys more often than others)
+### Question 2: Which part of the world has the largest standard deviation in temperature?(Or which part's temperature varys more often than others)
 To find out the answer, I want to build a choropleths
-
 
 *Write a function to get data from the database*
 ```python
@@ -300,7 +299,7 @@ def query_climate_database_2(year_begin, month):
     
     return pd.read_sql(cmd, conn, params=[year_begin, month])
 ```
-Check if it works
+*Show the plot*
 ```python
 query_climate_database_2(1980, 1)
 ```
@@ -482,8 +481,63 @@ def temp_std_plot(year_begin, month, min_obs, **kwargs):
                           title = "Standard deviation of temperature in " + pd.to_datetime(month, format='%m').month_name() + 
                              " since " + str(year_begin),
                           **kwargs)
+```
 
+*Show the plot*
+
+```python
 fig = temp_std_plot(1980, 1, min_obs = 10, size_max=5, projection="natural earth")
 fig.show()
 ```
-file:///D:/Github/stevezhu.github.io/images/temp_std_plot.html
+![temp_std_plot.html](/images/temp_std_plot.html)
+
+From the plot, I found in January, the places in high latitude tend to have higher standard deviation of temperature than the places in low latitude
+
+### Question 3: Which parts(North-East, North-West, South-East, South-West) of a given country have a higher average yearly change of temperature in a given month?
+
+*Write the plot function*
+
+I first categorize stations into four categories based on their latitude and longtitude, then use boxplot to visualize them. (Histogram and violin plot will be good too)
+
+```python
+def temp_change_boxplot(country, year_begin, year_end, month, **kwargs):
+    """
+    A function take input "country", "year_begin", "year_end", "month" and "**kwargs"
+    return histograms to show the Estimated Yearly Increase in Temperature for the
+    given country, year and month
+    """
+    df = query_climate_database(country, year_begin, year_end, month)
+
+    # add columns contains stations' geological information to the data frame 
+    long_range = max(df["LONGITUDE"])-min(df["LONGITUDE"])
+    min_long = min(df["LONGITUDE"])
+    df['EW'] = ""
+    df.loc[df["LONGITUDE"] < (min_long + long_range/2), ['EW']] = 'West'
+    df.loc[df["LONGITUDE"] >= (min_long + long_range/2), ['EW']] = 'East'
+
+    lat_range = max(df["LATITUDE"])-min(df["LATITUDE"])
+    min_lat = min(df["LATITUDE"])
+    df['NS'] = ""
+    df.loc[df["LATITUDE"] < (min_lat + lat_range/2), ['NS']] = 'South'
+    df.loc[df["LATITUDE"] >= (min_lat + lat_range/2), ['NS']] = 'North'
+    
+    # create a new data frame contains only name, geological information and Estimated Yearly Increase in Temperature (°C)
+    graph_df = df.groupby(["EW","NS","NAME"]).apply(average_increase).reset_index(name="Estimated Yearly Increase in Temperature (°C)")
+
+    return px.box(data_frame = graph_df,
+                        x = "Estimated Yearly Increase in Temperature (°C)",
+                        facet_row = "EW",
+                        facet_col = "NS",
+                        title = "Boxplot of estimates of yearly increase in temperature in " + pd.to_datetime(month, format='%m').month_name() + " for stations in " + country + ", years " + str(year_begin) + " - " + str(year_end),
+                        **kwargs)
+
+```
+*Show the plot*
+
+```python
+fig = temp_change_boxplot("India", 1980, 2020, 1)
+fig.show()
+```
+![temp_box_plot.html](/images/temp_box_plot.html)
+
+Based on the box plot, I found in India, the South-West part has more serious climate change problem than other parts.
