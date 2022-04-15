@@ -273,7 +273,7 @@ fig = temperature_coefficient_plot("India", 1980, 2020, 1,
 
 fig.show()
 ```
-![temp_coef_plot.html](/images/temp_coef_plot.html)
+{% include temp_coef_plot.html %}
 
 ### Question 2: Which part of the world has the largest standard deviation in temperature?(Or which part's temperature varys more often than others)
 To find out the answer, I want to build a choropleths
@@ -489,7 +489,7 @@ def temp_std_plot(year_begin, month, min_obs, **kwargs):
 fig = temp_std_plot(1980, 1, min_obs = 10, size_max=5, projection="natural earth")
 fig.show()
 ```
-![temp_std_plot.html](/images/temp_std_plot.html)
+{% include temp_std_plot.html %}
 
 From the plot, I found in January, the places in high latitude tend to have higher standard deviation of temperature than the places in low latitude
 
@@ -538,6 +538,6 @@ def temp_change_boxplot(country, year_begin, year_end, month, **kwargs):
 fig = temp_change_boxplot("India", 1980, 2020, 1)
 fig.show()
 ```
-![temp_box_plot.html](/images/temp_box_plot.html)
+{% include temp_box_plot.html %}
 
 Based on the box plot, I found in India, the South-West part has more serious climate change problem than other parts.
