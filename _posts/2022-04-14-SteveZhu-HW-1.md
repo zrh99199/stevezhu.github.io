@@ -447,7 +447,7 @@ query_climate_database_2(1980, 1)
 <p>561460 rows × 7 columns</p>
 </div>
 
-*Write the plot function"
+*Write the plot function*
 ```python
 import numpy as np
 
