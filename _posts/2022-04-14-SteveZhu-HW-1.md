@@ -277,10 +277,10 @@ fig.show()
 ```
 {% include temp_coef_plot.html %}
 
-### Question 2: Which countries have the largest standard deviation in temperature?(Or which part's temperature varys more often than others)
+Now, I want to know which countries have the largest standard deviation in temperature?(Or which part's temperature varys more often than others)
 To find out the answer, I want to build a choropleths
 
-*Write a function to get data from the database*
+*Write a function to get a data from the database*
 ```python
 def query_climate_database_2(year_begin, month):
     """
@@ -542,6 +542,71 @@ lat_std_scplot(1980, 1, min_obs = 10, ci = None, scatter_kws = {"s": 10}, line_k
 ![Hw1_Sctplot.png](/images/Hw1_Sctplot.png)
 
 Based on the scatter plot, I found there is a positive correlation between the latitude and the standard deviation of temeprature, which means a place in high latitude tends to exprience more variable temperature in January
+
+### Question 2: Visualize how temperature changes for each month for a country for a given period of time
+
+*Write a function to get data from the database*
+
+```python
+def query_climate_database_3(country, year_begin, year_end):
+    """
+    A function take input country, year_begin and year_end, return a 
+    dataframe contains country, year, month and average of temperature
+    """
+    
+    conn = sqlite3.connect("hw1.db")
+    cmd = \
+    """
+    SELECT T.year, T.month, AVG(T.temp) mean_temp \
+    FROM temperatures T \
+    LEFT JOIN countries C ON SUBSTR(T.id,1,2) == C.FIPS_10_4 \
+    WHERE country = ?
+    AND year >= ?
+    AND year <= ?
+    GROUP BY year, month
+    """
+    
+    return pd.read_sql(cmd, conn, params=[country, year_begin, year_end]) 
+```
+   
+*Write the plot function*
+
+```python
+import calendar
+
+def temp_heatmap(country, year_begin, year_end, **kwargs):
+    """
+    A function take input country, year_begin, year_end and kwargs,
+    return a headmap plot
+    """
+    df = query_climate_database_3(country, year_begin, year_end)
+    #tranform the data frame into pivot layout
+    graph_df = df.pivot("Year", "Month", "mean_temp")
+
+    #reverse the order of the data frame
+    graph_df = graph_df.iloc[::-1]
+
+    #rename the columns by using English words for months
+    dd=dict((enumerate(calendar.month_abbr)))
+    graph_df = graph_df.rename(columns=dd,level=0)
+
+    fig = px.imshow(graph_df, 
+                    labels = dict(color = "Temperature(°C)"), 
+                    x =graph_df.columns, 
+                    y =graph_df.index,
+                    title = "Heatmap of Temperature(°C) in " + country + " bewteen " + str(year_begin) + " and " + str(year_end) + " for each month",
+                    **kwargs)
+    fig.update_layout(width = 1000, height = 1000)
+    return fig
+```
+*Show the plot*
+
+```python
+fig = temp_heatmap("Brazil", 1980, 2020, color_continuous_scale = 'icefire')
+fig.show()
+```
+
+{% include temp_heatmap.html %}
 
 ### Question 3: Which parts(North-East, North-West, South-East, South-West) of a given country have a higher average yearly change of temperature in a given month?
 
