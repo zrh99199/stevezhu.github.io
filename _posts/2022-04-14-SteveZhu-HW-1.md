@@ -275,8 +275,11 @@ fig = temperature_coefficient_plot("India", 1980, 2020, 1,
 
 fig.show()
 ```
+
 {% include temp_coef_plot.html %}
 
+
+---
 Now, I want to know which countries have the largest standard deviation in temperature?(Or which part's temperature varys more often than others)
 To find out the answer, I want to build a choropleths
 
