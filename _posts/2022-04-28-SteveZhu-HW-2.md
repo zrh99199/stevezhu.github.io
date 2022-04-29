@@ -6,7 +6,7 @@ title: Homework 2
 
 In this blog, I will develop a web scraper to generate actor/actress data from IMDb, and use the data to give movies/TV shows recommendation based on my favorite movie *Interstellar*.
 
-Here's a link to my project repository: 
+Here's a link to my project repository: https://github.com/zrh99199/HW2-IMDb-Web-Scraping/
 
 ### 1. Building web scraper
 
