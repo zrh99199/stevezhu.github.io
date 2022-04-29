@@ -56,6 +56,7 @@ scrapy crawl imdb_spider -o result.csv
 ### 2. Analyze the spreadsheet
 
 Read the result.csv into python and take a look
+
 ```pyton
 import pandas as pd
 df = pd.read_csv('result.csv')
