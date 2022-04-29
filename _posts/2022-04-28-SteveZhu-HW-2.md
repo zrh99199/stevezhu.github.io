@@ -13,9 +13,9 @@ Here's a link to my project repository: https://github.com/zrh99199/HW2-IMDb-Web
 First, I develop the parse method which will redirect the movie/TV show page to its whole cast list
 ```python
     def parse(self, response):
-    ```
+    """
     redirect the start url to the fullcredits site
-    ```
+    """
         url = response.url + "fullcredits/"
         yield scrapy.Request(url, callback = self.parse_full_credit)
 ```
@@ -23,9 +23,9 @@ First, I develop the parse method which will redirect the movie/TV show page to 
 After getting in the cast page, the method parse_full_credit will redirect to all the actor/actress pages appeal in the cast page
 ```python
     def parse_full_credit(self, response):
-    ```
+    """
     redirect the fullcredits site to the actor/actress sites
-    ```
+    """
         prefix = "https://www.imdb.com"
         suffixs = [a.attrib["href"] for a in response.css("td.primary_photo a")]
         urls = [prefix + suffix for suffix in suffixs]
@@ -36,9 +36,9 @@ After getting in the cast page, the method parse_full_credit will redirect to al
 When we get in the actor/actress page, the method parse_actor_page will generate all the movies/TV shows he/she acts, and output the actor/actress' name with the movies/TV shows' name
 ```python
     def parse_actor_page(self,response):
-    ```
-    generate all the movies and tv shows the actor/actress plays
-    ```
+    """
+    generate all the movies and tv shows the actor/actress acts
+    """
         actor = response.css('title').get()[7:].split(" - IMDb",1)[0]
         #only look for the div.filmo-row with id like 'actor-...' or 'actress-...'
         for movie_tv in response.css('div.filmo-row[id^="act"]'):
