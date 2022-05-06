@@ -27,6 +27,7 @@ After getting in the cast page, the method parse_full_credit will redirect to al
     redirect the fullcredits site to the actor/actress sites
     """
         prefix = "https://www.imdb.com"
+        #get all the actor/actress imdb sites' suffix from td.primary_photo class
         suffixs = [a.attrib["href"] for a in response.css("td.primary_photo a")]
         urls = [prefix + suffix for suffix in suffixs]
         for url in urls:
@@ -39,8 +40,10 @@ When we get in the actor/actress page, the method parse_actor_page will generate
     """
     generate all the movies and tv shows the actor/actress acts
     """
+        #get the name of actor/actress from 'title' class
         actor = response.css('title').get()[7:].split(" - IMDb",1)[0]
         #only look for the div.filmo-row with id like 'actor-...' or 'actress-...'
+        #get the name of the movie from the class div.filmo-row with id started with 'act'
         for movie_tv in response.css('div.filmo-row[id^="act"]'):
             yield {
                 "actor": actor,
