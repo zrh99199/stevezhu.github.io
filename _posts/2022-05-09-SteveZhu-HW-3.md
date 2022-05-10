@@ -202,6 +202,7 @@ This model experiences serious overfitting issue because the validation accuracy
 #### Model with data augmentation
 
 **RandomFlip Layer**
+
 The RandomFlip Layer will randomly flip the picture by 90 degree
 ```python
 randomflip = keras.Sequential([keras.layers.RandomFlip('horizontal')])
@@ -227,6 +228,7 @@ for images, labels in train_dataset.take(1):
 ![HW3-plot2.png](/images/HW3-plot2.png)
 
 **RandomRotation Layer**
+
 The RandomFlip Layer will randomly flip the picture by the degree we choose
 ```python
 randomrot = keras.layers.RandomRotation(0.2) # rotate by 20 degree
