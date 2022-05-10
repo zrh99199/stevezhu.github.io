@@ -200,6 +200,58 @@ The accuracy of my model stabilized **between 95% and 99% ** during training and
 Compared to the baseline model, I did slightly better than it.
 This model experiences serious overfitting issue because the validation accuracy is much lower than the training accuracy.
 #### Model with data augmentation
+
+**RandomFlip Layer**
+The RandomFlip Layer will randomly flip the picture by 90 degree
+```python
+randomflip = keras.Sequential([keras.layers.RandomFlip('horizontal')])
+
+for images, labels in train_dataset.take(1):
+    plt.figure(figsize = (10,10))
+    for i in range(3):
+
+        plt.subplot(3,4,4*i+1)
+        im = images[i]
+
+        plt.imshow(im.numpy().astype("uint8"))
+        plt.axis("off")
+        plt.title("original")
+        
+        for j in range(3):
+            rf_im = randomflip(tf.expand_dims(im, 0),training=True)
+            plt.subplot(3,4,4*i+2+j)
+            plt.imshow(rf_im[0].numpy().astype("uint8"))
+            plt.axis("off")
+            plt.title("random flipped")
+```
+![HW3-plot2.png](/images/HW3-plot2.png)
+
+**RandomRotation Layer**
+The RandomFlip Layer will randomly flip the picture by the degree we choose
+```python
+randomrot = keras.layers.RandomRotation(0.2) # rotate by 20 degree
+
+for images, labels in train_dataset.take(1):
+    rf_im = [0, 0, 0]
+    plt.figure(figsize = (10,10))
+    for i in range(3):
+
+        plt.subplot(3,4,4*i+1)
+        im = images[i]
+
+        plt.imshow(im.numpy().astype("uint8"))
+        plt.axis("off")
+        plt.title("original")
+        
+        for j in range(3):
+            rf_im = randomrot(tf.expand_dims(im, 0),training=True)
+            plt.subplot(3,4,4*i+2+j)
+            plt.imshow(rf_im[0].numpy().astype("uint8"))
+            plt.axis("off")
+            plt.title("random flipped")
+```
+![HW3-plot3.png](/images/HW3-plot3.png)
+
 ```python
 model2 = keras.models.Sequential([
       keras.layers.RandomFlip(input_shape=(160, 160, 3)),                          
