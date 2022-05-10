@@ -398,7 +398,7 @@ history = model3.fit(train_dataset,
 
 
 The accuracy of my model stabilized **between 70% and 75%** during training and **between 70% and 74%** during validation.
-Compared to the baseline model, I did slightly better than it.
+Compared to the baseline model, I did much better than it.
 This model doesn't have serious overfitting issue because the validation accuracy is almost the same as the trainning accuracy.
 
 #### Model with transfer learning
@@ -475,7 +475,7 @@ history = model4.fit(train_dataset,
 
 
 The accuracy of my model stabilized **between 94% and 96%** during training and **between 95% and 96%** during validation.
-Compared to the baseline model, I did slightly better than it.
+Compared to the baseline model, I did much much better than it.
 This model doesn't have serious overfitting issue because the validation accuracy is almost the same as the trainning accuracy
 
 ### 3. Score on Test Data
