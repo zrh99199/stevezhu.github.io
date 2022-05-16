@@ -179,12 +179,6 @@ history1 = model1.fit(train,
 ```
 
     Epoch 1/20
-    
-
-    /usr/local/lib/python3.7/dist-packages/keras/engine/functional.py:559: UserWarning: Input dict contained keys ['text'] which did not match any model input. They will be ignored by the model.
-      inputs = self._flatten_to_reference_inputs(inputs)
-    
-
     898/898 [==============================] - 6s 6ms/step - loss: 0.6128 - accuracy: 0.6730 - val_loss: 0.3270 - val_accuracy: 0.9076
     Epoch 2/20
     898/898 [==============================] - 10s 11ms/step - loss: 0.1770 - accuracy: 0.9488 - val_loss: 0.1058 - val_accuracy: 0.9668
@@ -301,12 +295,6 @@ history2 = model2.fit(train,
 ```
 
     Epoch 1/20
-    
-
-    /usr/local/lib/python3.7/dist-packages/keras/engine/functional.py:559: UserWarning: Input dict contained keys ['title'] which did not match any model input. They will be ignored by the model.
-      inputs = self._flatten_to_reference_inputs(inputs)
-    
-
     898/898 [==============================] - 12s 12ms/step - loss: 0.3467 - accuracy: 0.8575 - val_loss: 0.1245 - val_accuracy: 0.9677
     Epoch 2/20
     898/898 [==============================] - 9s 10ms/step - loss: 0.1149 - accuracy: 0.9679 - val_loss: 0.0782 - val_accuracy: 0.9797
