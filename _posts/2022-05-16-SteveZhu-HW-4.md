@@ -601,3 +601,10 @@ fig = px.scatter(embedding_text,
 fig.show()
 ```
 {% include HW4-plotly2.html %}
+
+I found something interesting in my plots:
+1. The word 'clinton's ' is very close to 'trump's' in the 3D plot.
+2. The possessive adjectives are very close to each other(its, his, her) in the 3D plot.
+3. In the 2D plot, 'trump' is near to 'white'.
+4. In the 2D plot, 'kill' is close to 'winning'.
+5. In the 2D plot, 'iraqi' is close to 'missiles'.
