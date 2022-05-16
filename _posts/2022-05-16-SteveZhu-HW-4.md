@@ -165,6 +165,7 @@ model1.summary()
     _________________________________________________________________
     
 
+
 ```python
 model1.compile(optimizer="adam",
               loss = losses.SparseCategoricalCrossentropy(from_logits=True),
