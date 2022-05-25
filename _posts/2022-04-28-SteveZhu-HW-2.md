@@ -10,7 +10,15 @@ Here's a link to my project repository: https://github.com/zrh99199/HW2-IMDb-Web
 
 ### 1. Building web scraper
 
-First, I develop the parse method which will redirect the movie/TV show page to its whole cast list
+First, create a spider named imdb_spider with Interstellar imdb page(or any other movie imdb page) as start url 
+
+```python
+class ImdbSpider(scrapy.Spider):
+    name = "imdb_spider"
+    start_urls = ["https://www.imdb.com/title/tt0816692/"] #Movie Interstellar
+```
+
+Then, I develop the parse method which will redirect the movie/TV show page to its whole cast list
 ```python
     def parse(self, response):
     """
