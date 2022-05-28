@@ -74,7 +74,7 @@ The base template will define our web basic layout. The style.css will specify h
 </html>
 ```
 
-style.css
+#### style.css
 ```python
 html {
     font-family: Arial (sans-serif);
