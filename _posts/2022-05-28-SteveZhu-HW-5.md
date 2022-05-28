@@ -5,7 +5,7 @@ title: Homework 5
 ## Web Development
 
 In this blog, I will build a web app that allows users to submit messages and view random submitted messages.
-This is the repo for my app:[https://github.com/zrh99199/HW5](https://github.com/zrh99199/HW5)
+This is the repo for my app:[https://github.com/zrh99199/HW5/](https://github.com/zrh99199/HW5/)
 
 ### 0. Build app.py format
 Import some useful modules into our app.py file. Our web will have one main page and two extended pages(submit and view). Here is how our app.py will look like:
