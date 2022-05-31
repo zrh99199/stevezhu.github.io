@@ -84,6 +84,7 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
+<<<<<<< HEAD
 
 plugins:
   - jekyll-paginate
@@ -92,3 +93,6 @@ plugins:
   - jekyll-feed
   - jemoji
   - jekyll-include-cache
+=======
+theme: jekyll-theme-cayman
+>>>>>>> 46dc0ed09ea24d2dc6e47934af6a338dcc68c79b
