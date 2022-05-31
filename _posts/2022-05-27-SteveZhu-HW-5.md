@@ -99,12 +99,6 @@ h2 {
     font-size: 23px;
 }
 
-a {
-    color: CornflowerBlue;
-    text-decoration: none;
-}
-
-
 nav {
     display:flex;
     list-style-type: none;
