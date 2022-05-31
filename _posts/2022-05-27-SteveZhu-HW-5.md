@@ -38,7 +38,7 @@ def view():
 The base template will define our web basic layout. The style.css will specify how the elements in our web will look like.
 
 #### base.html
-``` raw
+``` html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -75,7 +75,7 @@ The base template will define our web basic layout. The style.css will specify h
 ```
 
 #### style.css
-```
+``` css
 html {
     font-family: Arial (sans-serif);
     background: lightblue;
@@ -136,7 +136,7 @@ nav {
 ### 2. Build main page
 The main page of our web are extended from base template and it will let user redirect to either submission page or message view page from the navigation bar.
 
-``` raw
+``` html
 {% extends 'base.html' %}
 {% block title %}Main{% endblock %}
 
@@ -240,7 +240,7 @@ def submit():
 ```
 
 The submit page of our web are extended from base template too and it will allow user to submit a message and a handle(or name) into our data base. I also use class="active" in the link of submit in the nav bar to make the submit link to become different when we are already in the submit page
-``` raw
+``` html
 {% extends 'base.html' %}
 {% block title %}Submit{% endblock %}
 
@@ -309,7 +309,7 @@ def view():
 ```
 
 The view page of our web is also extended from base template. And it will generate some random data from our database and output them.
-``` raw
+``` html
 {% extends 'base.html' %}
 {% block title %}View{% endblock %}
 
