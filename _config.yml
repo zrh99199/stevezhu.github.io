@@ -84,7 +84,6 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
-<<<<<<< HEAD
 
 plugins:
   - jekyll-paginate
