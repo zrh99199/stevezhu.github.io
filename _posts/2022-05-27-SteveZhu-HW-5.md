@@ -75,63 +75,6 @@ The base template will define our web basic layout. The style.css will specify h
 ```
 
 #### style.css
-``` css
-html {
-    font-family: Arial (sans-serif);
-    background: lightblue;
-    padding: 1rem;
-}
-
-body {
-    max-width: 900px;
-    padding-top: 60px;
-    margin: 0 auto;
-}
-
-h1 {
-    color: red;
-    margin: 1rem 0;
-    text-align: center;
-}
-
-h2 {
-    margin: 1rem 0;
-    font-size: 23px;
-}
-
-nav {
-    display:flex;
-    list-style-type: none;
-    margin:0;
-    padding:0;
-    overflow: hidden;
-    background-color: lightyellow;
-}
-
-    nav ul {
-        display: flex;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-    }
-
-        nav ul li a {
-            display: block;
-            padding: 0.5rem;
-        }
-
-        .active {
-            background-color: red;
-            color: blue;
-        }
-
-.content {
-    padding: 0 1rem 1rem;
-    background: lightyellow;
-}
-
-```
 
 ### 2. Build main page
 The main page of our web are extended from base template and it will let user redirect to either submission page or message view page from the navigation bar.
