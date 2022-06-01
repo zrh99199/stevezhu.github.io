@@ -42,7 +42,7 @@ The base template will define our web basic layout. The style.css will specify h
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{% raw %}{{ url_for('static', filename='style.css') }}{% endraw %}">
   </head>
 
   <body>
@@ -52,14 +52,14 @@ The base template will define our web basic layout. The style.css will specify h
 
     <main>
       <nav>
-        {% block nav %}{% endblock %}
+        {% raw %}{% block nav %}{% endblock %}{% endraw %}
       </nav>
 
       <section class="content">
         <header>
-          {% block header %}{% endblock %}
+          {% raw %}{% block header %}{% endblock %}{% endraw %}
         </header>
-        {% block content %}{% endblock %}
+        {% raw %}{% block content %}{% endblock %}{% endraw %}
       </section>
     </main>
 
@@ -137,17 +137,17 @@ nav {
 The main page of our web are extended from base template and it will let user redirect to either submission page or message view page from the navigation bar.
 
 ```html
-{% extends 'base.html' %}
-{% block title %}Main{% endblock %}
+{% raw %}{% extends 'base.html' %}{% endraw %}
+{% raw %}{% block title %}{% endraw %}Main{% raw %}{% endblock %}{% endraw %}
 
-{% block nav %}
+{% raw %}{% block nav %}{% endraw %}
 <ul>
-  <li><a href="{{ url_for('submit') }}">Submit a message</a></li>
-  <li><a href="{{ url_for('view') }}">View messages</a></li>
+  <li><a href="{% raw %}{{ url_for('submit') }{% endraw %}}">Submit a message</a></li>
+  <li><a href="{% raw %}{{ url_for('view') }}{% endraw %}">View messages</a></li>
 </ul>
-{% endblock %}
+{% raw %}{% endblock %}{% endraw %}
 
-{% block header %}<h2>Welcome to Steve Zhu's message bank!</h2>{% endblock %}
+{% raw %}{% block header %}{% endraw %}<h2>Welcome to Steve Zhu's message bank!</h2>{% raw %}{% endblock %}{% endraw %}
 
 ```
 
@@ -241,19 +241,19 @@ def submit():
 
 The submit page of our web are extended from base template too and it will allow user to submit a message and a handle(or name) into our data base. I also use class="active" in the link of submit in the nav bar to make the submit link to become different when we are already in the submit page
 ```html
-{% extends 'base.html' %}
-{% block title %}Submit{% endblock %}
+{% raw %}{% extends 'base.html' %}{% endraw %}
+{% raw %}{% block title %}{% endraw %}Submit{% raw %}{% endblock %}{% endraw %}
 
-{% block nav %}
+{% raw %}{% block nav %}{% endraw %}
 <ul>
-  <li><a href="{{ url_for('submit') }}" class="active">Submit a message</a></li>
-  <li><a href="{{ url_for('view') }}">View messages</a></li>
+  <li><a href="{% raw %}{{ url_for('submit') }}{% endraw %}" class="active">Submit a message</a></li>
+  <li><a href="{% raw %}{{ url_for('view') }}{% endraw %}">View messages</a></li>
 </ul>
-{% endblock %}
+{% raw %}{% endblock %}{% endraw %}
 
-{% block header %}<h2>Submit a message</h2>{% endblock %}
+{% raw %}{% block header %}{% endraw %}<h2>Submit a message</h2>{% raw %}{% endblock %}{% endraw %}
 
-{% block content %}
+{% raw %}{% block content %}{% endraw %}
   <form method="post">
       <label for="message">Your message:</label><br>
       <textarea name="message" id="message"></textarea>
@@ -264,16 +264,16 @@ The submit page of our web are extended from base template too and it will allow
       <input type="submit" value="Submit message">
   </form>
 
-  {% if submitted %}
+  {% raw %}{% if submitted %}{% endraw %}
     <br>
     Congrulation! You made a submission! 
-  {% endif %}
+  {% raw %}{% endif %}{% endraw %}
 
-  {% if error %}
+  {% raw %}{% if error %}{% endraw %}
     <br>
     Error, please try again!
-  {% endif %}
-{% endblock %}
+  {% raw %}{% endif %}{% endraw %}
+{% raw %}{% endblock %}{% endraw %}
 ```
 
 
@@ -310,27 +310,27 @@ def view():
 
 The view page of our web is also extended from base template. And it will generate some random data from our database and output them.
 ```html
-{% extends 'base.html' %}
-{% block title %}View{% endblock %}
+{% raw %}{% extends 'base.html' %}{% endraw %}
+{% raw %}{% block title %}{% endraw %}View{% raw %}{% endblock %}{% endraw %}
 
-{% block nav %}
+{% raw %}{% block nav %}{% endraw %}
 <ul>
-  <li><a href="{{ url_for('submit') }}">Submit a message</a></li>
-  <li><a href="{{ url_for('view') }}" class="active">View messages</a></li>
+  <li><a href="{% raw %}{{ url_for('submit') }}{% endraw %}">Submit a message</a></li>
+  <li><a href="{% raw %}{{ url_for('view') }}{% endraw %}" class="active">View messages</a></li>
 </ul>
-{% endblock %}
+{% raw %}{% endblock %}{% endraw %}
 
-{% block header %}<h2>Some Cool Messages</h2>{% endblock %}
+{% raw %}{% block header %}{% endraw %}<h2>Some Cool Messages</h2>{% raw %}{% endblock %}{% endraw %}
 
-{% block content %}
-  {% for message in messages %}
+{% raw %}{% block content %}{% endraw %}
+  {% raw %}{% for message in messages %}{% endraw %}
     <br>
-    </b>{{ message[1] }}
+    </b>{% raw %}{{ message[1] }}{% endraw %}
     <br>
-    <i>- {{ message[2] }}</i>
+    <i>- {% raw %}{{ message[2] }}{% endraw %}</i>
     <br>
-  {% endfor %}
-{% endblock %}
+  {% raw %}{% endfor %}{% endraw %}
+{% raw %}{% endblock %}{% endraw %}
 ```
 
 ### 5. Run web app
