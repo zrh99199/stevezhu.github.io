@@ -276,6 +276,7 @@ The submit page of our web are extended from base template too and it will allow
 {% raw %}{% endblock %}{% endraw %}
 ```
 
+In the submit.html, unlike base.html, the "Submit a message" bottom on the page will be a different color because the system detects we are in the submit page. The user will be able to enter two information in the submit page, one is 'name' and the other one is 'handle'. They are both 'textbox', which means user can type words there. After these two 'textbox' elements, there is a bottom named "Submit message" for user to click to submit their two 'textbox' elements. After clicking the "Submit message', a success notification will show up, or an error notation will show up if error happens.
 
 ### 4. Build view page
 
